@@ -52,6 +52,9 @@ Projet RNCP de traitement intelligent des e-mails :
 
 ## Installation
 
+In terminal after Downloads olloma 
+ollama pull mistral
+
 ```bash
 # Clone du projet
 git clone https://github.com/ton-username/RNCP-JARVIS.git
