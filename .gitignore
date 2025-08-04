@@ -1,0 +1,60 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs/
+*.log
+*.tlog
+*.out
+*.err
+
+# Build directories
+dist/
+build/
+out/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*.bak
+*.orig
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs and editors
+.vscode/
+.idea/
+*.iml
+
+# React Native specific
+.expo/
+.expo-shared/
+android/.gradle/
+android/app/build/
+ios/Pods/
+ios/build/
+*.xcworkspace
+*.xcuserstate
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Miscellaneous
+*.lock
+*.log
+*.cache
+coverage/
+.history
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
