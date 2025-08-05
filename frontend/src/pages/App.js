@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from '@react-oauth/google';
+import React from 'react';
 
 export default function App() {
   const [username, setUsername] = useState("");
@@ -9,7 +10,7 @@ export default function App() {
 
   const handleClassicLogin = async (e) => {
     e.preventDefault();
-    
+
     const response = await fetch("http://localhost:8000/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -26,7 +27,6 @@ export default function App() {
 
   const handleGoogleSuccess = async (credentialResponse) => {
     const idToken = credentialResponse.credential;
-    // Envoi au backend pour vérification
     const response = await fetch("http://localhost:8000/auth/google", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -46,7 +46,6 @@ export default function App() {
       <div className="w-full max-w-md bg-white rounded-xl shadow-md p-8">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Welcome to Jarvis</h2>
 
-        {/* Login Form */}
         <form onSubmit={handleClassicLogin} className="space-y-4">
           <div>
             <label className="block text-gray-700 mb-2">Username</label>
@@ -80,7 +79,6 @@ export default function App() {
 
         <div className="my-6 text-center text-gray-500">OR</div>
 
-        {/* Google Login */}
         <div className="flex justify-center">
           <GoogleLogin
             onSuccess={handleGoogleSuccess}
