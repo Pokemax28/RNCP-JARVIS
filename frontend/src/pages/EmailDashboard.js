@@ -8,23 +8,35 @@ export default function EmailDashboard() {
 
     useEffect(() => {
         const fetchEmails = async () => {
-            const response = await fetch("http://localhost:8000/emails");
-            const data = await response.json();
-            setFolders(Object.keys(data));
-            setEmails(data);
-            if (Object.keys(data).length > 0) {
-                setSelectedFolder(Object.keys(data)[0]);
+            try {
+                const response = await fetch("http://localhost:8000/api/mails");
+                const data = await response.json();
+
+                // Data is already in folder structure { Inbox: [...], Spam: [...], etc. }
+                setFolders(Object.keys(data));
+                setEmails(data);
+
+                if (Object.keys(data).length > 0) {
+                    setSelectedFolder(Object.keys(data)[0]);
+                }
+            } catch (error) {
+                console.error("Failed to fetch emails:", error);
             }
         };
+
         fetchEmails();
     }, []);
 
     const fetchEmailDetail = async (folder, msgid) => {
-        const response = await fetch(
-            `http://localhost:8000/email/${encodeURIComponent(folder)}/${msgid}`
-        );
-        const data = await response.json();
-        setSelectedEmail(data);
+        try {
+            const response = await fetch(
+                `http://localhost:8000/api/mail/${encodeURIComponent(folder)}/${msgid}`
+            );
+            const data = await response.json();
+            setSelectedEmail(data);
+        } catch (error) {
+            console.error("Failed to fetch email detail:", error);
+        }
     };
 
     return (
@@ -53,7 +65,7 @@ export default function EmailDashboard() {
             </aside>
 
             {/* Main Content */}
-            <main className="flex-1 bg-gray-50 p-6">
+            <main className="flex-1 bg-gray-50 p-6 overflow-y-auto">
                 {selectedEmail ? (
                     <div>
                         <button
