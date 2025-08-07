@@ -5,8 +5,7 @@ import requests
 import os
 from imapclient import IMAPClient
 from dotenv import load_dotenv
-from routes import sport
-app.include_router(sport.router)
+from routers import sport
 load_dotenv()
 
 ACCOUNT = 'ORANGE'  # Change to 'GMAIL' if needed
@@ -19,7 +18,7 @@ if not all([EMAIL_ADDRESS, EMAIL_PASSWORD, IMAP_SERVER, GOOGLE_CLIENT_ID]):
     raise ValueError("Required environment variables are not set.")
 
 app = FastAPI()
-
+app.include_routers(sport.routers)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],
