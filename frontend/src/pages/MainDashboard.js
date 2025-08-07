@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Calendar } from "../components/ui/calendar"; // 👈 Import ici
 
 export default function MainDashboard() {
   const navigate = useNavigate();
@@ -21,10 +22,10 @@ export default function MainDashboard() {
         </button>
       </header>
 
-      {/* Calendar Placeholder */}
+      {/* Calendar intégré */}
       <div className="p-4">
-        <div className="bg-white rounded shadow p-6 text-center text-gray-500 text-xl">
-          Calendar (à venir)
+        <div className="bg-white rounded shadow p-6">
+          <Calendar /> {/* 👈 Ton composant réel */}
         </div>
       </div>
 

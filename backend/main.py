@@ -5,7 +5,8 @@ import requests
 import os
 from imapclient import IMAPClient
 from dotenv import load_dotenv
-
+from routes import sport
+app.include_router(sport.router)
 load_dotenv()
 
 ACCOUNT = 'ORANGE'  # Change to 'GMAIL' if needed
