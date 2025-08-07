@@ -1,5 +1,5 @@
 import requests
-from backend.logger import get_logger
+from backend.scripts.logger import get_logger
 
 logger = get_logger()
 
